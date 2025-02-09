@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 from tensorflow.keras import Sequential
@@ -55,6 +56,9 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_
 tokenizer = Tokenizer(num_words=5000)
 tokenizer.fit_on_texts(X_train)
 
+with open("ai-model/tokenizer.pkl", "wb") as f:
+    pickle.dump(tokenizer, f)
+
 X_train_seq = tokenizer.texts_to_sequences(X_train)
 X_test_seq = tokenizer.texts_to_sequences(X_test)
 
@@ -82,3 +86,5 @@ y_pred_classes = (y_pred > 0.5).astype(int)
 print("Accuracy:", accuracy_score(y_test, y_pred_classes))
 print("Classification Report:\n", classification_report(y_test, y_pred_classes))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_classes))
+
+cnn_model.save("ai-model/stocks_news_scoring.keras")
