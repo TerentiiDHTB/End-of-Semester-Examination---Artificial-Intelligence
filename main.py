@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import Body, FastAPI
+from typing import Annotated
 import pickle
 from tensorflow import keras
 import pandas as pd
@@ -27,6 +28,6 @@ def check_model():
     return {"model_accuracy": accuracy_score(df['score'], y_pred_classes)}
 
 @app.post("/analysis/stock-news")
-def analysis_stock_news(stock: str):
-    prediction_result = cnn_model.predict(pad_sequences(tokenizer.texts_to_sequences([stock]), maxlen=150))[0][0]
+def analysis_stock_news(news : Annotated [str, Body(embed=True)]):
+    prediction_result = cnn_model.predict(pad_sequences(tokenizer.texts_to_sequences([news]), maxlen=150))[0][0]
     return {"analysis_result": "Новость скорее всего положительная" if prediction_result > 0.48 else "Новость скорее всего отрицательная"}
