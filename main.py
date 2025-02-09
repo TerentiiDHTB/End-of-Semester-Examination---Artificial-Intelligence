@@ -25,3 +25,7 @@ def check_model():
     y_pred_classes = (y_pred > 0.5).astype(int)
 
     return {"model_accuracy": accuracy_score(df['score'], y_pred_classes)}
+
+@app.post("/analysis/stock-news")
+def analysis_stock_news(stock: str):
+    return {"analysis_result": cnn_model.predict(pad_sequences(tokenizer.texts_to_sequences([stock]), maxlen=150))[0][0]}
