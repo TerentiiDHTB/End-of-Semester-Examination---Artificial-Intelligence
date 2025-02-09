@@ -12,7 +12,7 @@ def remove_junk_from_summary(summary):
   return summary
 
 def serialiseScore(score):
-    return 1 if score > 0 else -1
+    return 1 if score > 0 else 0
 
 df = pd.read_csv("ai-model/data.tsv", sep="\t")
 
