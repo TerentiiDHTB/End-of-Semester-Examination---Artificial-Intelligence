@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import pickle
 from sklearn.model_selection import train_test_split
@@ -49,6 +48,8 @@ df.dropna(inplace=True)
 
 df['summary'] = df['summary'].apply(remove_junk_from_summary)
 df['score'] = df['score'].apply(serialiseScore)
+
+df.to_csv("ai-model/prepared-data.csv")
 
 x, y = df["summary"], df["score"]
 
