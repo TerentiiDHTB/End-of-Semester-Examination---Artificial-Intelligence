@@ -28,4 +28,4 @@ def check_model():
 
 @app.post("/analysis/stock-news")
 def analysis_stock_news(stock: str):
-    return {"analysis_result": cnn_model.predict(pad_sequences(tokenizer.texts_to_sequences([stock]), maxlen=150))[0][0]}
+    return {"analysis_result": str(cnn_model.predict(pad_sequences(tokenizer.texts_to_sequences([stock]), maxlen=150))[0][0])}
