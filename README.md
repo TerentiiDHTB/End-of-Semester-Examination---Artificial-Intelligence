@@ -43,13 +43,21 @@
 
 ## Для запуска приложения необходимо
 
-    - Скопировать данное приложение из GIT на свою личную машину ( `git clone https://github.com/TerentiiDHTB/End-of-Semester-Examination---Artificial-Intelligence.git` )
+    - Скопировать данное приложение из GIT на свою личную машину 
 
-    - Опционально: поднять у себя виртуальное окружение ( `python -m venv venv` , потом `.venv/Source/activate` ), если у вас MacOS, то вместо python надо указать python3, и при активации указывать не только путь до виртуального окружения, но и команду source
+`git clone https://github.com/TerentiiDHTB/End-of-Semester-Examination---Artificial-Intelligence.git`  
 
-    - Установить все необходимые пакеты ( `pip install -r requirements.txt` )
+    - Опционально: поднять у себя виртуальное окружение если у вас MacOS, то вместо python надо указать python3, и при активации указывать не только путь до виртуального окружения, но и команду source
 
-    - Запустить сервер FastApi ( `fastapi dev main.py` )
+`python -m venv venv`
+
+`.venv/Source/activate`
+
+    - Установить все необходимые пакеты
+`pip install -r requirements.txt`  
+
+    - Запустить сервер FastApi
+`fastapi dev main.py`
 
     - Работать с сервером по адресу, указанному после его запуска
 
